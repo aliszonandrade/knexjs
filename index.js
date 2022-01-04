@@ -58,8 +58,52 @@ var database = require("./database");
 
 // QUERY RAW
 // CASE LIBRARY IS NOT FLEXIBLE YOU CAN USE RAW E USE ANY SQL CODE
-database.raw("SELECT * FROM games").then(data => {
-    console.log(data);
-}).catch(err => {
-    console.log(err);
-})
+// database.raw("SELECT * FROM games").then(data => {
+//     console.log(data);
+// }).catch(err => {
+//     console.log(err);
+// })
+
+// DELETE
+// database.whereRaw("nome LIKE 'Habbo%'").delete().table("games").then(d => {
+//     console.log(d);
+// }).catch(err => {
+//     console.log(err);
+// });
+
+// UPDATE
+// database.where({id: 3}).update({preco: 100}).table("games").then(d => {
+//     console.log(d);
+// }).catch(err => {
+//     console.log(err);
+// });
+
+// ORDER BY
+// database.select("nome","preco").table("games").orderBy("preco","ASC").then(d => {
+//     console.log(d);
+// }).catch(err => {
+//     console.log(err);
+// });
+
+// ASSOCIATED INSERT
+// database.insert({
+//     nome: "Rockstar",
+//     game_id: 3
+// }).table("estudios").then(d => {
+//     console.log(d);
+// }).catch(err => {
+//     console.log(err);
+// })
+
+// INNER JOIN
+// database.select(["games.*","estudios.nome as estudio"]).table("games").innerJoin("estudios","estudios.game_id","games.id").then(d => {
+//     console.log(d);
+// }).catch(err => {
+//     console.log(err);
+// });
+
+
+
+
+
+
