@@ -102,8 +102,37 @@ var database = require("./database");
 //     console.log(err);
 // });
 
+// LEFT JOIN
+// database.select(["games.*","estudios.nome as estudio"]).table("games").leftJoin("estudios","estudios.game_id","games.id").where("games.id","2").then(d => {
+//     console.log(d);
+// }).catch(err => {
+//     console.log(err);
+// });
 
+// M to M
+// database.select([
+//             "estudios.nome as Estudio",
+//             "games.nome as Game",
+//             "games.preco"
+//     ]).table("games_estudios")
+//     .innerJoin("games","games.id","games_estudios.game_id")
+//     .innerJoin("estudios","estudios.id","games_estudios.estudio_id")
+//     .then(d => {
+//         console.log(d)
+// }).catch(err => {
+//     console.log(err);
+// })
 
+async function transacao(){
+    try{
+        await database.transaction(async trans => {
+            await database.insert({nome: "Estudiozão"}).table("estudios");
+            await database.insert({nome: "Estudiozão pequeno"}).table("estudios");
+        });
 
+    }catch(err){
+        console.log(err)
+    };
+}
 
-
+transacao();
